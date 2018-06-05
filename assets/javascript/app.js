@@ -23,7 +23,7 @@ $(document).ready(function () {
 
     function giphyRequest(subject) {
         $("#imgContainer").empty();
-        let query = "http://api.giphy.com/v1/gifs/search?q=" + subject + "&api_key=" + giphyKey;
+        let query = "http://api.giphy.com/v1/gifs/search?q=" + subject.toLowerCase() + "&api_key=" + giphyKey;
         // "http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=YOUR_API_KEY&limit=5"
         console.log(query);
         let imgRow = $("<div>");
