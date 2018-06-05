@@ -38,11 +38,16 @@ body {
     width: 200px;
     display: block;
     /* float: left; */
+    margin: 10px;
 }
 
 .newImg {
     width: 100%;
     height: 100%;
+    padding: 10px;
+}
+
+.newSpan {
     padding: 10px;
 }
 
