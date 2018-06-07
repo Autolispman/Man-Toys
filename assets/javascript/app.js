@@ -25,7 +25,6 @@ $(document).ready(function () {
         $("#imgContainer").empty();
         let query = "https://api.giphy.com/v1/gifs/search?q=" + subject.toLowerCase() + "&api_key=" + giphyKey;
         // "http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=YOUR_API_KEY&limit=5"
-        console.log(query);
         let imgRow = $("<div>");
         imgRow.attr("id", "gifRow1");
         imgRow.addClass("row");
@@ -48,22 +47,12 @@ $(document).ready(function () {
                 newImg.attr("data-still", response.data[i].images.fixed_width_small_still.url); // still image
                 newImg.attr("data-animate", response.data[i].images.fixed_width_small.url); // animated image
                 newImg.attr("data-state", "still"); // set the image state
-                newImg.attr("state", "image");
-                //newImg.attr("image", response.data[i].images.fixed_height_still.url)
-                //newImg.attr("movie", response.data[i].images.looping.mp4)
-                //newImg.attr("movie", response.data[i].images.fixed_height.url)
+                newImg.attr("state", "image");                
                 newImgDiv.append(newImg);
                 $(imgRow).append(newImgDiv);
-                //console.log(response.data[i].images.looping.mp4);
-                //console.log(newImg);
-
             }
-            console.log(response.data);
-            //console.log(response.Runtime);
         });
     }
-
-
 
     $(document).on("click", ".toyButton", function () {
         giphyRequest($(this).text());
@@ -71,36 +60,17 @@ $(document).ready(function () {
 
     $(document).on("click", "#toy-submit", function () {
         toys.addToToys($("#toy-input").val().trim());
-        //console.log(toys);
         setupHtml();
         $("#toy-input").val("");
     })
 
     $(document).on("click", ".newImg", function () {
         if ($(this).attr("state") == "image") {
-            // let newIframe = $("<iframe>");
-            // newIframe.attr("src", $(this).attr("movie"));
-            // newIframe.attr("state", "movie")
-            // newIframe.attr("image", $(this).attr("image"))
-            // newIframe.attr("movie", $(this).attr("movie"))
-            // newIframe.addClass(".newImg");
-            // let parent = $(this).parent();
-            // parent.empty();
-            // parent.append(newIframe);
             $(this).attr("src", $(this).data("animate"));
             $(this).attr("state", "movie");
             return;
         }
         if ($(this).attr("state") == "movie") {
-            // let newImg = $("<img>");
-            // newImg.attr("src", $(this).attr("image"));
-            // newImg.attr("state", "image")
-            // newImg.attr("image", $(this).attr("image"))
-            // newImg.attr("movie", $(this).attr("movie"))
-            // newImg.addClass(".newImg");
-            // let parent = $(this).parent();
-            // parent.empty();
-            // parent.append(newImg);
             $(this).attr("src", $(this).data("still"));
             $(this).attr("state", "image");
             return;
